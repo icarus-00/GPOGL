@@ -94,7 +94,7 @@ void score_board() {
         renderBitmapString(xMin, yMax - yMax / 10, zMax - 1, (void*)GLUT_BITMAP_TIMES_ROMAN_24, "Win");
 
         glColor3f(1, 0, 1);
-        sprintf_s(s, "Your Score: %d", (score * 50));
+        sprintf_s(s, "Your Score: %d", (score));
         renderBitmapString(xMin, yMax - yMax / 5, zMax - 1, GLUT_BITMAP_HELVETICA_18, s);
         sprintf_s(s, "High Score: %d", hight_score);
         renderBitmapString(xMin, yMax - yMax / 3.3, zMax - 1, GLUT_BITMAP_HELVETICA_18, s);
@@ -107,7 +107,7 @@ void score_board() {
         renderBitmapString(xMin, yMax - yMax / 10, zMax - 1, (void*)GLUT_BITMAP_HELVETICA_18, "GAME OVER");
 
         glColor3f(1, 0, 1);
-        sprintf_s(s, "Your Score: %d", (score * 50));
+        sprintf_s(s, "Your Score: %d", (score));
         renderBitmapString(xMin, yMax - yMax / 5, zMax - 1, GLUT_BITMAP_HELVETICA_18, s);
         sprintf_s(s, "High Score: %d", hight_score);
         renderBitmapString(xMin, yMax - yMax / 3.3, zMax - 1, GLUT_BITMAP_HELVETICA_18, s);

@@ -10,6 +10,7 @@
 #include "cars.h"
 #include "misc.h"
 
+#include <random>
 
 #include <Windows.h>
 #include <tchar.h>
@@ -68,6 +69,9 @@ float incre = INCRE_DEFAULT;
 
 char s[50];
 
+float randXmin = 2.5 * xMin / 5;
+float randXmax = 2.5 * xMax / 5;
+
 
 
 //Funcations
@@ -86,6 +90,13 @@ void collision();
 
 void load(int);
 void check(unsigned char*);
+
+float randomFloat(float min, float max) {
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> dis(min, max);
+    return dis(gen);
+}
 
 int main(int argc, char* argv[])
 {
@@ -138,7 +149,12 @@ void timer(int) {
     //if game is running (gv==1) and not pause, the speed of the cars are handled by the fps of the game
     if (gv == 1 && !pause) {
        // if (FPS < 0.5)FPS += 0.01;
-        score += FPS;
+        if (FPS >= 0.5) score += FPS * 20;
+        else if ( FPS >= 0.7 ) score += FPS*40;
+        else
+        {
+            score +=  FPS * 10;
+        }
         
 
 
@@ -147,19 +163,22 @@ void timer(int) {
         //every time the car passes zmax , it's z will return to 0, and a new lr index will be assigned
         if (car1 > z2) {
             car1 = 0;
-            lrIndex1 = ((rand() % 3 + 1) * 3) + xMin + 4;
+            //lrIndex1 = ((rand() % 3 + 1) * 3) + xMin + 4;
+            lrIndex1 = randomFloat(randXmin, randXmax);
         }
 
         car2 += FPS;
         if (car2 > z2) {
             car2 = 0;
-            lrIndex2 = ((rand() % 3 + 1) * 3) + xMin + 4;
+            //lrIndex2 = ((rand() % 3 + 1) * 3) + xMin + 4;
+            lrIndex2 = randomFloat(randXmin, randXmax);
         }
 
         car3 += FPS;
         if (car3 > z2) {
             car3 = 0;
-            lrIndex3 = ((rand() % 3 + 1) * 3) + xMin + 4;
+            //lrIndex3 = ((rand() % 3 + 1) * 3) + xMin + 4;
+            lrIndex3 = randomFloat(randXmin, randXmax);
         }
 
         incre1 += FPS / 2;
@@ -257,12 +276,19 @@ void start() {
 
 
         //initializes randomly generated cars at specific locations
+        float randXmin = 2.5 * xMin / 5;
+        float randXmax = 2.5 * xMax / 5;
         car1 = 0;
-        lrIndex1 = ((rand() % 3 + 1) * 3) + xMin + 4;
+        //lrIndex1 = ((rand() % 3 + 1) * 3) + xMin;
+        //lrIndex1 = xMin  + rand() % (xMin - xMax + 1);
+        lrIndex1 =  randomFloat (randXmin, randXmax);
         car2 = -35;
-        lrIndex2 = ((rand() % 3 + 1) * 3) + xMin + 4;
+        //lrIndex2 = ((rand() % 3 + 1) * 3) + xMin + 4;
+
+        lrIndex2 = randomFloat(randXmin, randXmax);
         car3 = -70;
-        lrIndex3 = ((rand() % 3 + 1) * 3) + xMin + 4;
+        //lrIndex3 = ((rand() % 3 + 1) * 3) + xMin + 4;
+        lrIndex3 = randomFloat(randXmin, randXmax);
     }
 }
 
@@ -279,6 +305,8 @@ void Race() {
     BoundingBox car1 = cars(1);
     BoundingBox car2 =  cars(2);
     BoundingBox car3 =  cars(3);
+
+
     if (checkCollision(playercar , car1)) {
         gv = 3;
         if (score > hight_score) hight_score = score;
@@ -291,6 +319,8 @@ void Race() {
         gv = 3;
         if (score > hight_score) hight_score = score;
     }
+
+
     /*
     if (checkAllCollisions()) {
         gv = 3;

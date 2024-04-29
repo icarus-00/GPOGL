@@ -70,7 +70,7 @@ void road(float xMin , float yMin , float zMin, float xMax, float yMax, float zM
     glVertex3f(3 * xMax / 5, yMin, zMax);
     glVertex3f(3 * xMax / 5, yMin, zMin);
     glVertex3f(1 * xMax / 5, yMin, zMin);*/
-    glVertex3f(3 * xMin / 5, yMin, zMax);
+    glVertex3f(3*  xMin / 5, yMin, zMax);
 
     glVertex3f(3 * xMax / 5, yMin, zMax);
 
