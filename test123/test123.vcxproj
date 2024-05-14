@@ -149,14 +149,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="cars.cpp" />
+    <ClCompile Include="ship.cpp" />
     <ClCompile Include="misc.cpp" />
     <ClCompile Include="road.cpp" />
     <ClCompile Include="test123.cpp" />
     <ClCompile Include="tree.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cars.h" />
+    <ClInclude Include="ship.h" />
     <ClInclude Include="misc.h" />
     <ClInclude Include="road.h" />
     <ClInclude Include="shaders.h" />

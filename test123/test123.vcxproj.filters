@@ -27,7 +27,7 @@
     <ClCompile Include="tree.cpp">
       <Filter>Source Files\source impl</Filter>
     </ClCompile>
-    <ClCompile Include="cars.cpp">
+    <ClCompile Include="ship.cpp">
       <Filter>Source Files\source impl</Filter>
     </ClCompile>
     <ClCompile Include="misc.cpp">
@@ -41,7 +41,7 @@
     <ClInclude Include="tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cars.h">
+    <ClInclude Include="ship.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="misc.h">

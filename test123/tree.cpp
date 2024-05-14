@@ -2,6 +2,8 @@
 #include <cmath> // for cos and sin functions
 #include <GL/glut.h> // for OpenGL functions
 
+
+
 extern float xMin, xMax, yMin, yMax, zMin, zMax; // Assuming these are declared globally elsewhere
 
 void renderTree(float x, float z, int n) {
@@ -22,6 +24,9 @@ void renderTree(float x, float z, int n) {
     }
     glEnd();
 }
+
+
+
 
 void renderTrees(int incre) {
     float z1 = ((zMax + abs(zMin)) / 10);
